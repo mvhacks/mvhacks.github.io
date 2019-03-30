@@ -1,0 +1,48 @@
+h1, h2, span, p {
+	color: #eee;
+	margin: 0;
+	padding: 0;
+	display: block;
+	font-family: 'Poppins';
+}
+
+a {
+	color: #ee521f;
+}
+
+.links {
+	color: #eee;
+	display: block;
+	font-family: 'Poppins';
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	font-size: 24px;
+}
+
+.announcement {
+	padding: 24px;
+	background: #444;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+	border-radius: 10px;
+	width: calc(100% - 48px);
+	margin-bottom: 22px;
+}
+
+.announcement > .title {
+	font-size: 34px;
+	font-weight: 700;
+	display: inline;
+	color: #ee521f;
+}
+
+.announcement > .time {
+	display: inline;
+	float: right;
+	font-size: 20px;
+}
+
+.announcement > .body {
+	font-size: 28px;
+	margin-top: 8px;
+}
