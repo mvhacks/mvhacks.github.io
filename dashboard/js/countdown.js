@@ -1,6 +1,6 @@
 // high key copied from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_countdown cause didn't want to write myself
 
-var countDownDate = new Date("March 30, 2019 20:30:00").getTime();
+var countDownDate = new Date("March 30, 2019 20:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
