@@ -29,7 +29,8 @@
 	<div id="navbar">
 		<div>
 			<div>
-				<img src="img/logo.png" style="height: 40px;">
+				<h1 class="pt-sans" style="font-size: 36px;">MVHacks 3.0</h1>
+				<!-- <img src="img/mv.png" style="height: 40px;"> -->
 			</div>
 			<div id="navbar-links">
 				<a class="link" onclick="scrollToSection('whatis')">Info</a>
@@ -41,11 +42,11 @@
 	</div>
 
 	<div id="front-page">
-		<div id="particles" style="position: absolute; height: 100%; width: 100%;"></div>
+		<div id="particles" style="position: absolute; height: 80vh; width: 100%;"></div>
 		<div class="container">
 			<div class="hovering-images">
 				<img src="img/m.png" class="logo-image">
-				<img src="img/v.png" class="logo-image" style="margin-left: 16px; animation-delay: 1s;">
+				<img src="img/v.png" class="logo-image" style="margin-left: -2vw; animation-delay: 1s;">
 			</div>
 			<div class="hovering-text">
 				<h1>MVHacks 3.0</h1>
@@ -58,11 +59,11 @@
 		</div>
 	</div>
 
-	<div id="whatis">
+	<div id="whatis" style="z-index: 10;">
 		<div id="whatis-container">
 			<div>
 				<div id="whatis-text">
-					<h1 class="section-title">What is MVHacks?</h1>
+					<h1 class="section-title" style="color: #fff;">What is MVHacks?</h1>
 					<br>
 					<div>MVHacks is a annual high school hackathon organized by Mountain View High School students. Both first time and more experienced programmers will gather together to code, learn, and have fun!</div>
 					<br>
@@ -90,7 +91,7 @@
 	<div id="schedule">
 		<div id="schedule-container">
 			<div style="float: left;">
-				<h1 class="section-title">Schedule</h1>
+				<h1 class="section-title" style="color: white;">Schedule</h1>
 				<br><br>
 				<div style="display: flex; justify-content: space-between;">
 					<div style="flex: 1; padding: 0 18px;">
@@ -102,7 +103,7 @@
 			</div>
 
 			<div style="float: right;" id="activities">
-				<h1 class="section-title">Activities</h1>
+				<h1 class="section-title" style="color: white;">Activities</h1>
 					<br><br>
 					<div style="flex: 1; padding: 0 18px;">
 						<table class="schedule-table" id="activites-table">
@@ -122,6 +123,13 @@
 		</div>
 	</div>
 
+	<div id="partners-divider">
+		<div>
+			<h1 style="font-size: 50px;">Interested in sponsoring MVHacks?</h1>
+			<h2>Email us at <a href="mailto:contact@mvhacks.io">contact@mvhacks.io</a> and look at our <a target="_blank" href="https://url.mvhs.io/mvhacks-pros">prospectus</a></h2>
+		</div>
+	</div>
+
 	<div id="sponsors">
 		<div style="padding: 40px;">
 			<h1 class="section-title">Sponsors</h1>
@@ -130,16 +138,32 @@
 		</div>
 	</div>
 
-	<!-- <div id="team">
+	<div id="team">
 		<div style="padding: 40px;">
-			<h1 class="section-title">The Team</h1>
-			<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-			</div>
+			<h1 class="section-title" style="color: white;">The Team</h1>
+			<div style="display: flex; justify-content: center; flex-wrap: wrap;"></div>
+			<div style="display: flex; justify-content: center; flex-wrap: wrap; max-width: 80%; margin: auto;"></div>
 		</div>
-	</div> -->
+	</div>
+
+	<div id="thanks">
+		<div style="padding: 40px;">
+			<h1 style="font-size: 50px;">Thanks for making it down here!</h1>
+			<h2>You seem <span style="color: var(--main-color);">really interested</span> — why not join our mailing list and get <span style="color: var(--main-color);">notified when sign-ups open?</span></h2>
+			<br><br>
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLSfUaGYhhR9BtlKta0I5yshMw9E743Ogdt33A7h8Azy_G9VoSQ/viewform" target="_blank"class="btn">Get notified</a>
+		</div>
+	</div>
 
 	<div id="footer">
-		<div style="padding: 20px;">
+		<div id="copyright">Copyright © 2020 MVHacks. All rights reserved.</div>
+		<!-- <div id="signup">
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLSfUaGYhhR9BtlKta0I5yshMw9E743Ogdt33A7h8Azy_G9VoSQ/viewform" target="_blank"class="footerbtn">Get notified when sign-ups open</a>
+		</div> -->
+		<div id="contact">
+			<a href="https://www.facebook.com/mvhacks/"><img src="img/facebook.svg" height="40" width="40"></img></a>
+			<a href="https://www.instagram.com/mvhacks/?hl=en"><img src="img/instagram.svg" height="40" width="40" style=" margin-left: 1vw;"></img></a>
+			<a href="https://twitter.com/mvhacksca"><img src="img/twitter.svg" height="40" width="40" style=" margin-left: 1vw;"></img></a>
 		</div>
 	</div>
 	
