@@ -8,21 +8,365 @@
 	<meta name="keywords" content="mvhs,hackathon,mountain view,mountain,view,high,school,code,hacks,mvhacks,compete">
 	<meta name="theme-color" content="#ec4d37">
 	<meta name="referrer" content="no-referrer">
-
 	<link rel="shortcut icon" href="img/favicon.png">
+	<style>
+		#front-page {
+			height: 100vh;
+		}
+		#front-page > .container {
+			display: flex;
+			height: 100%;
+			align-items: center;
+			padding: 0 30px;
+			opacity: 0;
+			user-select: none;
+		}
+		#front-page > .container > .hovering-images {
+			height: 35vh;
+			width: 100%;
+		}
+		#front-page > .container > .hovering-text {
+			width: 100%;
+			z-index: 1;
+		}
+		#front-page > .container > .hovering-text > h1 {
+			font-family: 'PT Sans';
+			font-size: 110px;
+			display: block;
+			text-shadow: 0px 10px 20px #bbb;
+		}
+		#front-page > .container > .hovering-text > .top {
+			font-family: 'Oxygen';
+			font-size: 50px;
+			display: block;
+		}
+		#front-page > .container > .hovering-text > .bottom {
+			font-family: 'Oxygen';
+			font-size: 30px;
+			display: block;
+		}
+		@media screen and (max-width: 1300px) {
+			#front-page > .container > .hovering-text > h1 {
+				font-size: 90px;
+			}
+			#front-page > .container > .hovering-images {
+				height: 23vh;
+			}
+		}
+		.logo-image {
+			filter: drop-shadow(5px 40px 13px #bbb);
+			height: 120%;
+			padding-left: 3vw;
+			animation-duration: 3s;
+			animation-name: float;
+			animation-timing-function: ease-in-out;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+		}
+		#whatis {
+			min-height: 100vh;
+			background: linear-gradient(45deg, var(--main-color), rgb(160, 41, 135));
+		}
+		#whatis-text {
+			position: -webkit-sticky;
+			position: -moz-sticky;
+			position: -ms-sticky;
+			position: -o-sticky;
+			position: sticky;
+			top: 100px;
+		}
+		#image-display {
+			display: flex;
+			padding: 0 4px;
+			max-width: 50%;
+			min-width: 350px;
+		}
+		#whatis-container {
+			display: flex;
+			justify-content: space-between;
+			flex-direction: row;
+			padding: 40px;
+		}
+		#image-display > div {
+			flex: 50%;
+			max-width: 50%;
+			padding: 0 12px;
+		}
+		#image-display > div img {
+			margin-top: 24px;
+			vertical-align: middle;
+			max-width: 100%;
+			border-radius: 6px;
+			box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
+			transition: all 0.2s ease;
+		}
+		.section-title {
+			font-family: 'PT Sans';
+			color: var(--main-color);
+			font-size: 80px;
+		}
+		#whatis-text > div {
+			font-size: 24px;
+			max-width: 80%;
+			color: #fff;
+		}
+		#faq > div {
+			padding: 40px;
+			padding-bottom: 90px;
+		}
+		#faq-container {
+			display: flex;
+			justify-content: space-between;
+			flex-direction: row;
+		}
+		.faq-item {
+			width: 100%;
+			min-width: 400px;
+		}
+		.faq-item > div > div {
+			padding: 24px 16px;
+			color: #353535;
+			border-bottom: 1px solid var(--main-color);
+		}
+		.faq-item > div > div > a {
+			color: var(--main-color);
+		}
+		.faq-item > div {
+			transition: max-height 0.2s ease-out;
+			max-height: 0;
+			overflow: hidden;
+		}
+		.faq-item > span {
+			color: #000;
+			font-size: 18px;
+			border-bottom: 1px solid var(--main-color);
+			padding: 16px 6px;
+			cursor: pointer;
+			display: block;
+			transition: all .2s ease;
+			transition: background-color 0.4s ease-out;
+		}
+		.faq-item > span:after {
+			content: url(/img/down.svg);
+			float: right;
+			margin-left: 5px;
+			width: 25px;
+			height: 25px;
+		}
+		#schedule {
+			background: linear-gradient(315deg,#099783, var(--main-color));
+			padding: 60px 0;
+		}
+		tr {
+			font-size: 18px;
+		}
+		td {
+			padding-right: 10px;
+			transition: background-color 0.5s ease-out;
+			background-color: transparent;
+		}
+		.first-td {
+			min-width: 80px;
+		}
+		.schedule-table {
+			color: white;
+			width: 45vw;
+			min-width: 350px;
+		}
+		#schedule-container {
+			padding: 40px;
+			display: flex;
+			justify-content: space-between;
+			flex-direction: row;
+		}
+		.sponsor-image {
+			display: block;
+			flex-basis: 25%;
+		}
+		.sponsor-image > div {
+			padding: 25px;
+		}
+		.sponsor-image > div > img {
+			max-width: 100%;
+			min-width: 150px;
+			transition: all 150ms linear;
+			filter: grayscale(.2);
+		}
+		#partners-divider {
+			height: 200px;
+			background: linear-gradient(315deg,var(--main-color),#329ce2);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: white;
+		}
+		#partners-divider h1, #partners-divider h2 {
+			text-align: center;
+		}
+		#partners-divider h1 {
+			font-size: 50px;
+		}
+		#partners-divider a {
+			color: white;
+		}
+		#partners > div {
+			padding: 20px;
+		}
+		.partner-image {
+			display: block;
+			flex-basis: 33%;
+		}
+		.partner-image > div {
+			padding: 25px;
+		}
+		.partner-image > div > img {
+			max-width: 100%;
+			min-width: 300px;
+			transition: all 150ms linear;
+			filter: grayscale(.2);
+		}
+		#team {
+			background: linear-gradient(315deg,var(--main-color),#329ce2);
+		}
+		.profile {
+			background: #fff;
+			box-shadow: 0 0 10px 1px #00000052;
+			border-radius: 28px;
+			padding: 16px;
+			margin: 10px;
+		}
+		.profile > img {
+			height: 200px;
+			width: 200px;
+			border-radius: 50%;
+		}
+		.profile > div {
+			margin-top: 4px;
+			text-align: center;
+		}
+		.profile > div > h4 {
+			color: #555;
+		}
+		.profile > div > h5 > a {
+			color: #555;
+		}
+		/* footer */
+		#footer {
+			background: linear-gradient(315deg,var(--main-color),#329ce2);
+			padding: 20px;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			align-items: center;
+		}
+		#copyright {
+			color: white;
+		}
+		:root {
+			--main-color: #006db5;
+		}
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: "Oxygen", system-ui;
+		}
+		html, body {
+			height: 100%;
+			height: 100%;
+		}
+		a {
+			cursor: pointer;
+		}
+		.pt-sans {
+			font-family: "PT Sans";
+		}
+		#navbar {
+			position: fixed;
+			width: 100%;
+			top: 0;
+			height: 60px;
+			opacity: 0;
+			transition: opacity .5s ease;
+			background: #fff;
+			z-index: 20;
+			box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.23);
+		}
+		#navbar > div {
+			display: flex;
+			align-items: center;
+			height: 100%;
+			padding: 0 40px;
+			justify-content: space-between;
+		}
+		#navbar-links > a {
+			margin: 0 12px;
+			font-size: 18px;
+		}
+		.btn {
+			display: inline-block;
+			padding: 16px 28px;
+			border: 2px var(--main-color) solid;
+			font-size: 20px;
+			text-align: center;
+			text-decoration: none;
+			color: var(--main-color);
+			position: relative;
+			overflow: hidden;
+			transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out;
+			z-index: 1;
+			border-radius: 6px;
+		}
+		.btn:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: var(--main-color);
+			transition: transform 0.25s ease-in-out;
+			z-index: -1;
+			transform: translate3d(-100%, 0, 0);
+		}
+		.link {
+			position: relative;
+			display: inline-block;
+			outline: none;
+			color: #000;
+			text-decoration: none;
+			outline: none;
+			padding: 1px 0;
+		}
 
-	<link href="https://fonts.googleapis.com/css?family=Oxygen:400,700|PT+Sans:700|Poppins" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/dist/bundle.css?v=1.0.2">
+		.link::after {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background: var(--main-color);
+			content: '';
+			opacity: 0;
+			-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+			-moz-transition: opacity 0.3s, -moz-transform 0.3s;
+			transition: opacity 0.3s, transform 0.3s;
+			-webkit-transform: translateY(10px);
+			-moz-transform: translateY(10px);
+			transform: translateY(10px);
+		}
+	</style>
+	<link rel="preload" href="/dist/bundle.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="/dist/bundle.css"></noscript>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141136525-1"></script>
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141136525-1"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
 
 		gtag('config', 'UA-141136525-1');
-	</script>
+	</script> -->
 </head>
 <body>
 
@@ -46,16 +390,17 @@
 		<div id="particles" style="position: absolute; height: 80vh; width: 100%;"></div>
 		<div class="container">
 			<div class="hovering-images">
-				<img src="img/m.png" class="logo-image">
-				<img src="img/v.png" class="logo-image" style="margin-left: -2vw; animation-delay: 1s;">
+				<img data-src="img/m.png" class="logo-image lazyload">
+				<img data-src="img/v.png" class="logo-image lazyload" style="margin-left: -2vw; animation-delay: 1s;">
 			</div>
 			<div class="hovering-text">
 				<h1>MVHacks 3.0</h1>
 				<span class="top">The hackathon for everyone.</span>
 				<br>
-				<span class="bottom">February 2020. Silicon Valley.</span>
+				<span class="bottom" style="color: red;">MVHacks has been postponed due to the coronavirus</span>
+				<!-- <span class="bottom">April 4th, 2020. Silicon Valley.</span>
 				<br>
-				<a href="https://url.mvhs.io/mvhacks-interest" target="_blank"class="btn">Get notified when sign-ups open</a>
+				<a href="https://url.mvhs.io/attendee" target="_blank"class="btn">Apply to MVHacks 3.0</a> -->
 			</div>
 		</div>
 	</div>
@@ -150,9 +495,9 @@
 	<div id="thanks">
 		<div style="padding: 40px;">
 			<h1 style="font-size: 50px;">Thanks for making it down here!</h1>
-			<h2>You seem <span style="color: var(--main-color);">really interested</span> — why not join our mailing list and get <span style="color: var(--main-color);">notified when sign-ups open?</span></h2>
+			<h2>You seem <span style="color: var(--main-color);">really interested</span> — why not apply? <span style="color: var(--main-color);">We'd love to see you there</span></h2>
 			<br><br>
-			<a href="https://url.mvhs.io/mvhacks-interest-lower" target="_blank"class="btn">Get notified</a>
+			<a href="https://url.mvhs.io/attendee-lower" target="_blank"class="btn">Apply to MVHacks 3.0</a>
 		</div>
 	</div>
 
@@ -162,12 +507,12 @@
 			<a href="https://docs.google.com/forms/d/e/1FAIpQLSfUaGYhhR9BtlKta0I5yshMw9E743Ogdt33A7h8Azy_G9VoSQ/viewform" target="_blank"class="footerbtn">Get notified when sign-ups open</a>
 		</div> -->
 		<div id="contact">
-			<a href="https://www.facebook.com/mvhacks/"><img src="img/facebook.svg" height="40" width="40"></img></a>
-			<a href="https://www.instagram.com/mvhacks/?hl=en"><img src="img/instagram.svg" height="40" width="40" style=" margin-left: 1vw;"></img></a>
-			<a href="https://twitter.com/mvhacksca"><img src="img/twitter.svg" height="40" width="40" style=" margin-left: 1vw;"></img></a>
+			<a href="https://www.facebook.com/mvhacks/"><img data-src="img/facebook.svg" class="lazyload" height="40" width="40"></img></a>
+			<a href="https://www.instagram.com/mvhacks/?hl=en"><img data-src="img/instagram.svg" class="lazyload" height="40" width="40" style=" margin-left: 1vw;"></img></a>
+			<a href="https://twitter.com/mvhacksca"><img data-src="img/twitter.svg" class="lazyload" height="40" width="40" style=" margin-left: 1vw;"></img></a>
 		</div>
 	</div>
-	
-	<script type="text/javascript" src="/dist/bundle.js?v=1.0.2"></script>
+	<script src="lazysizes.min.js" async></script>
+	<script type="text/javascript" src="/dist/bundle.js"></script>
 </body>
 </html>
